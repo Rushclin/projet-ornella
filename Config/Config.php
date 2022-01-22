@@ -21,5 +21,6 @@ function config()
         'AUTHOR' => 'ORNELLA DJEMO',
         'SCHOOL' => 'Institut de PAUL',
         'EMAIL' => 'ornelladj@gmail.com',
+        'TITLE' => 'Gestion Scolaire',
     );
 }
