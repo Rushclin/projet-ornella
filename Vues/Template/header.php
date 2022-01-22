@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-    <title>Gestion scolaire</title>
+    <title><?= $titre ?></title>
     <link type="text/css" rel="stylesheet" href="Assets/css/font-awesome.css">
     <link type="text/css" rel="stylesheet" href="Assets/css/material-design-iconic-font.css">
     <link type="text/css" rel="stylesheet" href="Assets/css/bootstrap.css">

@@ -130,3 +130,19 @@ a:focus {
 .data-align-right {
   text-align: right;
 }
+*{
+  scrollbar-width: thin;
+  scrollbar-color: rgb(107, 107, 143) rgb(16, 15, 14);
+}
+*::-webkit-scrollbar{
+  width: 7px;
+}
+*::-webkit-scrollbar-track{
+  background-color: rgb(134, 138, 126);
+}
+*::-webkit-scrollbar-thumb{
+  background-color: rgb(4, 4, 10);
+  border-radius: 10px;
+  border: 0px solid rgb(68, 67, 64);
+}
+

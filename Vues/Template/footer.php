@@ -3,18 +3,24 @@
         <div class="row">
             <div class="col-md-6 col-sm-6">
                 <div class="footer-left">
-                    <span>© 2015 <a href="http://themeforest.net/user/westilian">westilian</a></span>
+                    <span>
+                        <?= date('Y'); ?>
+                        &copy;
+                        <?= config()['SCHOOL']; ?>
+                    </span>
                 </div>
             </div>
             <div class="col-md-6 col-sm-6">
                 <div class="footer-right">
-                    <span class="footer-meta">Crafted with&nbsp;<i class="fa fa-heart"></i>&nbsp;by&nbsp;<a href="http://themeforest.net/user/westilian">westilian</a></span>
+                    <span class="footer-meta">Designed &nbsp;<i class="fa fa-heart"></i>&nbsp;by&nbsp; <?= config()['AUTHOR'] ?> </a></span>
                 </div>
             </div>
         </div>
     </div>
 </footer>
 </section>
+
+<!-- Inclusion de javaScript necessaire pour son fonctionnement -->
 <script src="Assets/js/lib/jquery.js"></script>
 <script src="Assets/js/lib/jquery-migrate.js"></script>
 <script src="Assets/js/lib/bootstrap.js"></script>
@@ -60,7 +66,5 @@
 <script src="Assets/js/lib/theme-switcher.js"></script>
 <script src="Assets/js/apps.js"></script>
 </body>
-
-<!-- Mirrored from www.lab.westilian.com/westilo-admin/fixed-width-view/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jan 2022 06:33:48 GMT -->
 
 </html>
