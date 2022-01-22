@@ -21,6 +21,7 @@
     <link type="text/css" rel="stylesheet" href="Assets/css/common.css">
     <link type="text/css" rel="stylesheet" href="Assets/css/responsive.css">
     <link type="text/css" id="themes" rel="stylesheet" href="#">
+    <link rel="shortcut icon" href="Assets/images/logos/logo-removebg.png" type="image/x-icon">
 </head>
 
 <body class="overlay-leftbar">

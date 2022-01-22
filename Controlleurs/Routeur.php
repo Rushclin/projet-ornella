@@ -2,18 +2,21 @@
 require 'Controlleurs/AcceuilController.php';
 require 'Controlleurs/ErreurController.php';
 require 'Controlleurs/LoginController.php';
+require 'Controlleurs/RequeteNoteController.php';
 
 class Routeur
 {
     private $ctrlAcceuil;
     private $ctrlErreur;
     private $ctrlLogin;
+    private $ctrlRequetNote;
 
     public function __construct()
     {
         $this->ctrlAcceuil = new AcceuilController();
         $this->ctrlErreur = new ErreurController();
         $this->ctrlLogin = new LoginController();
+        $this->ctrlRequetNote = new RequeteNoteController();
     }
 
     public function routerRequet()
@@ -28,6 +31,8 @@ class Routeur
                     $login = $this->getParametre($_POST, 'login');
                     $mdp = $this->getParametre($_POST, 'password');
                     $this->ctrlLogin->login($login, $mdp);
+                } else if ($_GET['action'] == 'requete/note') {
+                    $this->ctrlRequetNote->index();
                 } else {
                     $this->ctrlErreur->erreur('Action non reconnue');
                 }

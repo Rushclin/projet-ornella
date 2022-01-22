@@ -65,6 +65,7 @@
 <script src="Assets/js/lib/vmap.init.js"></script>
 <script src="Assets/js/lib/theme-switcher.js"></script>
 <script src="Assets/js/apps.js"></script>
+<script src="Assets/js/lib/j-forms-validations.js"></script>
 </body>
 
 </html>
