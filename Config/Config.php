@@ -19,7 +19,7 @@ function config()
         'PASSWORD' => '',
         'DATABASE' => 'projet-ornella',
         'AUTHOR' => 'ORNELLA DJEMO',
-        'SCHOOL' => 'Institut de PAUL',
+        'SCHOOL' => 'Institut Universitaire de la cote (Douala)',
         'EMAIL' => 'ornelladj@gmail.com',
         'TITLE' => 'Gestion Scolaire',
     );

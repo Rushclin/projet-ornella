@@ -14,22 +14,34 @@
             </div>
             <div class="admin-bar">
                 <ul>
-                    <li><a href="#"><i class="zmdi zmdi-power"></i>
-                        </a>
+                    <li>
+                        <a href="" title="Se deconnecter"><i class="zmdi zmdi-power"></i></a>
                     </li>
-                    <li><a href="#"><i class="zmdi zmdi-account"></i>
-                        </a>
-                    </li>
-                    <li><a href="#"><i class="zmdi zmdi-key"></i>
-                        </a>
-                    </li>
-                    <li><a href="#"><i class="zmdi zmdi-settings"></i>
-                        </a>
+                    <li>
+                        <a href="#" title="Info de son compte"><i class="zmdi zmdi-account"></i></a>
                     </li>
                 </ul>
             </div>
         </div>
         <ul class="list-accordion tree-style">
+            <li class="list-title">Requetes</li>
+            <li>
+                <a href="#"><i class="fa fa-dashboard"></i><span class="list-label">Layouts
+                        Variations</span></a>
+                <ul>
+                    <li><a href="boxed-layout.html">Boxed Layout</a></li>
+                    <li><a href="iconic-view.html">Iconic Leftbar</a></li>
+                    <li><a href="material-style-leftbar.html">Material Styled Leftbar</a></li>
+                    <li><a href="tile-leftbar.html">Tile Leftbar</a></li>
+                    <li><a href="with-language-bar.html">With Language Bar</a></li>
+                    <li><a href="top-user-thumb.html">Topbar User Thumb</a></li>
+                    <li><a href="tabby-leftbar.html">Tabby Leftbar</a></li>
+                    <li><a href="notification-rightbar.html">Only Notifications Rightbar</a></li>
+                    <li><a href="without-rightbar.html">Without Rightbar</a></li>
+                    <li><a href="activities-rightbar.html">Activities Rightbar</a></li>
+                </ul>
+            </li>
+
             <li class="list-title">Layouts</li>
             <li>
                 <a href="#"><i class="zmdi zmdi-view-dashboard"></i><span class="list-label">Layouts

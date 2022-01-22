@@ -16,6 +16,7 @@ class Modele
         }
         return $resultat;
     }
+
     private function getDB()
     {
         if ($this->bd == null) {

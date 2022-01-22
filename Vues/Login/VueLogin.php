@@ -28,7 +28,7 @@
                     <form action="index.php?action=login/connexion" method="POST" class="j-forms" id="forms-login">
                         <div class="login-form-header">
                             <div class="logo">
-                                <a href="index.php"><img src="images/logo-dark.png" alt="logo"></a>
+                                <a href="index.php"><img src="Assets/images/logos/logo-removebg.png" class="img-fluid" height="100" height="100" alt="logo"></a>
                             </div>
                         </div>
                         <div class="login-form-content">
