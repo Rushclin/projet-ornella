@@ -3,6 +3,8 @@ require 'Controlleurs/AcceuilController.php';
 require 'Controlleurs/ErreurController.php';
 require 'Controlleurs/LoginController.php';
 require 'Controlleurs/RequeteNoteController.php';
+require 'Controlleurs/RequeteAutreController.php';
+require 'Controlleurs/RequeteAffichageController.php';
 
 class Routeur
 {
@@ -10,6 +12,8 @@ class Routeur
     private $ctrlErreur;
     private $ctrlLogin;
     private $ctrlRequetNote;
+    private $ctrlRequetAutre;
+    private $ctrlAffController;
 
     public function __construct()
     {
@@ -17,6 +21,8 @@ class Routeur
         $this->ctrlErreur = new ErreurController();
         $this->ctrlLogin = new LoginController();
         $this->ctrlRequetNote = new RequeteNoteController();
+        $this->ctrlRequetAutre = new RequeteAutreController();
+        $this->ctrlAffController = new RequeteAffichageController();
     }
 
     public function routerRequet()
@@ -33,6 +39,18 @@ class Routeur
                     $this->ctrlLogin->login($login, $mdp);
                 } else if ($_GET['action'] == 'requete/note') {
                     $this->ctrlRequetNote->index();
+                } else if ($_GET['action'] == 'requete/autre') {
+                    $this->ctrlRequetAutre->index();
+                } else if ($_GET['action'] == 'requete/liste/all') {
+                    $this->ctrlAffController->index();
+                } else if ($_GET['action'] == 'requete/liste/encours') {
+                    $this->ctrlAffController->requeteEnCours();
+                } else if ($_GET['action'] == 'requete/liste/nonfondees') {
+                    $this->ctrlAffController->requeteNonFondee();
+                } else if ($_GET['action'] == 'requete/liste/traitees') {
+                    $this->ctrlAffController->requeteTraitee();
+                } else if ($_GET['action'] == 'requete/liste/rejetees') {
+                    $this->ctrlAffController->requeteRejetee();
                 } else {
                     $this->ctrlErreur->erreur('Action non reconnue');
                 }

@@ -24,26 +24,24 @@
             </div>
         </div>
         <ul class="list-accordion tree-style">
-            <li class="list-title">Emrettre une Requete</li>
+            <li class="list-title">Emrettre une requete</li>
             <li>
                 <a href="#"><i class="zmdi zmdi-view-dashboard"></i><span class="list-label">Types de requetes </span></a>
                 <ul>
                     <li><a href="index.php?action=requete/note">Requete de notes</a></li>
-                    <li><a href="iconic-view.html">Requete de nom</a></li>
-                    <li><a href="material-style-leftbar.html">Autres requetes</a></li>
+                    <li><a href="index.php?action=requete/autre">Autres Requetes</a></li>
                 </ul>
             </li>
 
             <li class="list-title">Suivre mes requetes</li>
             <li>
-                <a href="#"><i class="zmdi zmdi-swap"></i><span class="list-label">Liste des Requetes</span></a>
+                <a href="#"><i class="zmdi zmdi-swap"></i><span class="list-label">Liste des requetes</span></a>
                 <ul>
-                    <li><a href="boxed-layout.html">Toutes les requetes</a></li>
-                    <li><a href="boxed-layout.html">Requetes en cours</a></li>
-                    <li><a href="iconic-view.html">Requetes annulee</a></li>
-                    <li><a href="material-style-leftbar.html">Requetes non fondees</a></li>
-                    <li><a href="tile-leftbar.html">Requetes traitees</a></li>
-                    <li><a href="with-language-bar.html">Requetes rejetees</a></li>
+                    <li><a href="index.php?action=requete/liste/all">Toutes les requetes</a></li>
+                    <li><a href="index.php?action=requete/liste/encours">Requetes en cours</a></li>
+                    <li><a href="index.php?action=requete/liste/nonfondees">Requetes non fondees</a></li>
+                    <li><a href="index.php?action=requete/liste/traitees">Requetes traitees</a></li>
+                    <li><a href="index.php?action=requete/liste/rejetees">Requetes rejetees</a></li>
                 </ul>
             </li>
             <li class="list-title">Notifications</li>

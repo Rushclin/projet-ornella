@@ -1,10 +1,10 @@
-<?php $this->titre = "Requte nom"; ?>
+<?php $this->titre = "Requte autre"; ?>
 
 <div class="page-header filled light">
     <div class="row">
         <div class="col-md-6 col-sm-6">
-            <h2>Requetes de notes</h2>
-            <p>Emetre une requete pour revendiquer sa note</p>
+            <h2>Requetes pour revendiquer autres choses</h2>
+            <p>Emetre une requete pour revendiquer ou rectifier autres choses.</p>
         </div>
     </div>
 </div>
@@ -76,36 +76,16 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-md-6 unit">
-                                    <label class="label">Matiere</label>
-                                    <label class="input select">
-                                        <select class="form-control" required>
-                                            <option value="none">Selectionnez votre matiere</option>
-                                            <option value="0">Bio112 => Introduction a la biologie animale</option>
-                                            <option value="1">Bio221 => Introduction au metabolisme</option>
-                                        </select>
-                                        <i></i>
-                                    </label>
+                                <div class="col-md-12 unit">
+                                    <label class="label">Objet</label>
+                                    <input type="text" name="" class="form-control" required id="">
                                 </div>
-                                <div class="col-md-6 unit">
-                                    <label class="label">Note conernee</label>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label class="radio">
-                                                <input type="radio" name="radio" checked>
-                                                <i></i>
-                                                CC
-                                            </label>
-                                        </div>
+                            </div>
 
-                                        <div class="col-md-6">
-                                            <label class="radio">
-                                                <input type="radio" name="radio">
-                                                <i></i>
-                                                Normale
-                                            </label>
-                                        </div>
-                                    </div>
+                            <div class="row">
+                                <div class="col-md-12 unit">
+                                    <label class="label">Corps de la requete</label>
+                                    <textarea name="" id="" cols="30" rows="4" class="form-control"></textarea>
                                 </div>
                             </div>
 

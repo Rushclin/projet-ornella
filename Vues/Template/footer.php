@@ -66,6 +66,8 @@
 <script src="Assets/js/lib/theme-switcher.js"></script>
 <script src="Assets/js/apps.js"></script>
 <script src="Assets/js/lib/j-forms-validations.js"></script>
+
+<script src="Assets/js/lib/footable.all.js"></script>
 </body>
 
 </html>
