@@ -49,8 +49,9 @@ class Routeur
                     $niveau = $this->getParametre($_POST, 'niveau');
                     $matiere = $this->getParametre($_POST, 'matiere');
                     $session = $this->getParametre($_POST, 'session');
+                    $statuts = $this->getParametre($_POST, 'statut');
 
-                    $this->ctrlRequetNote->create($matiere, $session, $img, $nom, $prenom, $specialite, $niveau);
+                    $this->ctrlRequetNote->create($matiere, $session, $img, $nom, $prenom, $specialite, $niveau, $statuts);
                 } else if ($_GET['action'] == 'requete/autre/post') {
 
                     $target = "Assets/images/justifications/" . basename($_FILES['file']['name']);

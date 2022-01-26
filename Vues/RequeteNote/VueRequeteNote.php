@@ -55,6 +55,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <input type="hidden" name="statut" value="EN COURS">
 
                             <div class="row">
                                 <div class="col-md-6 unit">

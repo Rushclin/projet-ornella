@@ -22,7 +22,7 @@ class RequeteNoteController
         $vue->generer(array('specialites' => getSpecialite(), 'niveaux' => getNiveau(), 'matieres' => getMatiere()));
     }
 
-    public function create($matiere, $session, $img, $nom, $prenom, $specialite, $niveau)
+    public function create($matiere, $session, $img, $nom, $prenom, $specialite, $niveau, $statuts)
     {
         $id = $_SESSION['USER']['ALL']['id_et'];
         $ajout = $this->modeleRequeteNote->add($id, $matiere, $session, $img);
