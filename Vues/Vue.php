@@ -1,6 +1,7 @@
 <?php
 
 require_once 'Config/Config.php';
+session_start();
 
 class Vue
 {

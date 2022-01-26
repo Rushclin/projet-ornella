@@ -34,9 +34,24 @@ class Routeur
                 } else if ($_GET['action'] == 'login') {
                     $this->ctrlLogin->index();
                 } else if ($_GET['action'] == 'login/connexion') {
-                    $login = $this->getParametre($_POST, 'login');
-                    $mdp = $this->getParametre($_POST, 'password');
-                    $this->ctrlLogin->login($login, $mdp);
+                    $matricule = $this->getParametre($_POST, 'matricule');
+                    $email = $this->getParametre($_POST, 'email');
+                    $this->ctrlLogin->login($matricule, $email);
+                } else if ($_GET['action'] == 'requete/note/post') {
+
+                    $target = "Assets/images/justifications/" . basename($_FILES['file']['name']);
+                    $img = $_FILES['file']['name'];
+                    move_uploaded_file($_FILES['file']['tmp_name'], $target);
+
+                    $nom = $this->getParametre($_POST, 'nom');
+                    $prenom = $this->getParametre($_POST, 'prenom');
+                    $specialite = $this->getParametre($_POST, 'specialite');
+                    $niveau = $this->getParametre($_POST, 'niveau');
+                    $matiere = $_POST['matiere'];
+                    $session = $_POST['session'];
+                    //$file = $this->getParametre($_POST, 'file');
+
+                    $this->ctrlRequetNote->create($matiere, $session, $img, $nom, $prenom, $specialite, $niveau);
                 } else if ($_GET['action'] == 'requete/note') {
                     $this->ctrlRequetNote->index();
                 } else if ($_GET['action'] == 'requete/autre') {

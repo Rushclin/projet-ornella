@@ -8,8 +8,6 @@ class LoginController
 
 {
 
-    private $login;
-    private $mdp;
     private $modeleUser;
 
     public function __construct()
@@ -34,12 +32,13 @@ class LoginController
         $resultat = $this->modeleUser->getUser($login, $mdp);
 
         if ($resultat) {
+            $_SESSION['USER']['ALL'] = $this->modeleUser->getAllInfo($login, $mdp);
             $vue = new Vue('Acceuil');
             $vue->generer(array());
         } else {
             $msg = "Erreur !! verifiez le login ou le mot de passe ";
             $vue = new LoginVue('Login');
-            $vue->generer(array('msg' => $msg, 'login' => $login));
+            $vue->generer(array('msg' => $msg, 'login' => $login, 'email' => $mdp));
         }
     }
 }

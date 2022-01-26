@@ -18,6 +18,7 @@
     <link type="text/css" rel="stylesheet" href="Assets/css/bootstrap-extend.css">
     <link type="text/css" rel="stylesheet" href="Assets/css/common.css">
     <link type="text/css" rel="stylesheet" href="Assets/css/responsive.css">
+    <link rel="shortcut icon" href="Assets/images/logos/logo-removebg.png" type="image/x-icon">
 </head>
 
 <body class="login-page">
@@ -44,19 +45,19 @@
                                         <p></p>
                                         <i class="fa fa-user"></i>
                                     </label>
-                                    <input class="form-control login-frm-input" type="text" id="login" name="login" placeholder="Username" value="<?= isset($login) ? $login : "" ?>">
+                                    <input class="form-control login-frm-input" type="text" id="login" name="matricule" placeholder="Matricule" value="<?= isset($login) ? $login : "" ?>">
                                 </div>
                             </div>
                             <div class="unit">
                                 <div class="input login-input">
                                     <label class="icon-left" for="password">
                                         <p class=""></p>
-                                        <i class="fa fa-key"></i>
+                                        <i class="fa fa-at"></i>
                                     </label>
-                                    <input class="form-control login-frm-input" type="password" id="password" name="password" placeholder="Mot de passe">
-                                    <span class="hint">
+                                    <input class="form-control login-frm-input" type="email" id="email" name="email" placeholder="Adresse email" required value="<?= isset($mdp) ? $mdp : "" ?>">
+                                    <!--<span class="hint">
                                         <a href="#" class="link">Mot de passe oublie ?</a>
-                                    </span>
+                                    </span>-->
                                 </div>
                             </div>
                             <div class="unit">

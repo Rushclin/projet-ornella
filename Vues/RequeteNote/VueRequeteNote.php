@@ -1,10 +1,10 @@
-<?php $this->titre = "Requte nom"; ?>
+<?php $this->titre = "Requete note"; ?>
 
 <div class="page-header filled light">
     <div class="row">
         <div class="col-md-6 col-sm-6">
             <h2>Requetes de notes</h2>
-            <p>Emetre une requete pour revendiquer sa note</p>
+            <?= isset($msg) ? '<p class="text-danger">' . $msg . "</p>" : '<p>Emetre une requete pour revendiquer sa note</p>' ?></p>
         </div>
     </div>
 </div>
@@ -15,7 +15,7 @@
 
             <div class="widget-container margin-top-0 clearfix">
                 <div class="widget-content">
-                    <form action="" method="POST" class="j-forms" id="j-forms-validation" novalidate>
+                    <form action="index.php?action=requete/note/post" enctype="multipart/form-data" method="POST" class="j-forms" id="j-forms-validation" novalidate>
                         <div class="form-content">
                             <div class="w-section-header">
                                 <h3>Remplissez le formulaire et soumettez votre requete</h3>
@@ -28,7 +28,7 @@
                                         <label class="icon-right" for="email">
                                             <i class="fa fa-user"></i>
                                         </label>
-                                        <input class="form-control" type="text" placeholder="" name="nom" id="nom" required>
+                                        <input class="form-control" type="text" value="<?= isset($nom) ? $nom : '' ?>" placeholder="" name="nom" id="nom" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6 unit">
@@ -37,7 +37,7 @@
                                         <label class="icon-right" for="url">
                                             <i class="fa fa-user"></i>
                                         </label>
-                                        <input class="form-control" type="text" placeholder="" name="prenom" id="prenom" required>
+                                        <input class="form-control" type="text" placeholder="" value="<?= isset($prenom) ? $prenom : '' ?>" name="prenom" id="prenom" required>
                                     </div>
                                 </div>
                             </div>
@@ -47,13 +47,11 @@
                                     <label class="label">Specialite</label>
 
                                     <label class="input select">
-                                        <select class="form-control" required>
+                                        <select class="form-control" required name='specialite'>
                                             <option value="none">Selectionnez une specialite</option>
-                                            <option value="0">Informatique</option>
-                                            <option value="1">Biologie</option>
-                                            <option value="2">Biochimie</option>
-                                            <option value="3">Biologie animale</option>
-                                            <option value="4">Biologie Vegetale</option>
+                                            <?php foreach ($specialites as $specialite) : ?>
+                                                <option value="<?= $specialite ?>" <?= isset($specialit) ? 'selected' : '' ?>> <?= $specialite ?> </option>
+                                            <?php endforeach; ?>
                                         </select>
                                         <i></i>
                                     </label>
@@ -61,14 +59,11 @@
                                 <div class="col-md-6 unit">
                                     <label class="label">Niveau</label>
                                     <label class="input select">
-                                        <select class="form-control" required>
+                                        <select class="form-control" required name='niveau'>
                                             <option value="none">Selectionnez un niveau d'etude</option>
-                                            <option value="0">1</option>
-                                            <option value="1">2</option>
-                                            <option value="2">3</option>
-                                            <option value="3">4</option>
-                                            <option value="4">5</option>
-                                            <option value="5">6</option>
+                                            <?php foreach ($niveaux as $niveau) : ?>
+                                                <option value="<?= $niveau ?>" <?= isset($nivea) ? 'selected' : '' ?>> <?= $niveau ?> </option>
+                                            <?php endforeach; ?>
                                         </select>
                                         <i></i>
                                     </label>
@@ -79,10 +74,11 @@
                                 <div class="col-md-6 unit">
                                     <label class="label">Matiere</label>
                                     <label class="input select">
-                                        <select class="form-control" required>
-                                            <option value="none">Selectionnez votre matiere</option>
-                                            <option value="0">Bio112 => Introduction a la biologie animale</option>
-                                            <option value="1">Bio221 => Introduction au metabolisme</option>
+                                        <select class="form-control" required name='matiere'>
+                                            <option value="none">Selectionnez une matiere</option>
+                                            <?php foreach ($matieres as $matiere) : ?>
+                                                <option value="<?= $matiere ?>" <?= isset($matier) ? 'selected' : '' ?>> <?= $matiere ?></option>
+                                            <?php endforeach; ?>
                                         </select>
                                         <i></i>
                                     </label>
@@ -92,7 +88,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label class="radio">
-                                                <input type="radio" name="radio" checked>
+                                                <input type="radio" name="session" value='CC' checked>
                                                 <i></i>
                                                 CC
                                             </label>
@@ -100,7 +96,7 @@
 
                                         <div class="col-md-6">
                                             <label class="radio">
-                                                <input type="radio" name="radio">
+                                                <input type="radio" name="session" value='NORMALE'>
                                                 <i></i>
                                                 Normale
                                             </label>

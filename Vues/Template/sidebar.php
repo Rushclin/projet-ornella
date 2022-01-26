@@ -7,15 +7,15 @@
                 </div>
                 <div class="admin-user-info">
                     <ul>
-                        <li><a href="#">Rushclin Takam</a></li>
-                        <li><a href="#">takamrushclin@gmail.com</a></li>
+                        <li><a href="#"><?= $_SESSION['USER']['ALL']['nom_et'] ?></a></li>
+                        <li><a href="#"><?= $_SESSION['USER']['ALL']['email_et'] ?></a></li>
                     </ul>
                 </div>
             </div>
             <div class="admin-bar">
                 <ul>
                     <li>
-                        <a href="" title="Se deconnecter"><i class="zmdi zmdi-power"></i></a>
+                        <a href="index.php?" title="Se deconnecter"><i class="zmdi zmdi-power"></i></a>
                     </li>
                     <li>
                         <a href="#" title="Mes infos"><i class="zmdi zmdi-account"></i></a>

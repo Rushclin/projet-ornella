@@ -1,9 +1,10 @@
+<?= !isset($_SESSION['USER']['ALL']) ? header('Location:index.php') : '';  ?>
+
 <?php $this->titre = "Page d'acceuil" ?>
 <div class="page-header filled light">
     <div class="row">
         <div class="col-md-6 col-sm-6">
-            <h2>Acceuil</h2>
-            <p>Recpitulatif des requetes</p>
+            <?= isset($msg) ? '<h2 class="text-success" id= "msg">' . $msg . '</h2>' : '<h2>Acceuil</h2><p>Recpitulatif des requetes</p>' ?>
         </div>
     </div>
 </div>
