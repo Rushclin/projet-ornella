@@ -47,13 +47,12 @@ class Routeur
                     $prenom = $this->getParametre($_POST, 'prenom');
                     $specialite = $this->getParametre($_POST, 'specialite');
                     $niveau = $this->getParametre($_POST, 'niveau');
-                    $objet = $this->getParametre($_POST, 'objet');
                     $matiere = $this->getParametre($_POST, 'matiere');
                     $session = $this->getParametre($_POST, 'session');
 
                     $this->ctrlRequetNote->create($matiere, $session, $img, $nom, $prenom, $specialite, $niveau);
                 } else if ($_GET['action'] == 'requete/autre/post') {
-                    
+
                     $target = "Assets/images/justifications/" . basename($_FILES['file']['name']);
                     $img = $_FILES['file']['name'];
                     move_uploaded_file($_FILES['file']['tmp_name'], $target);
@@ -88,7 +87,8 @@ class Routeur
                 $this->ctrlLogin->index();
             }
         } catch (Exception $e) {
-            $this->ctrlErreur->erreur($e->getMessage());
+            // $this->ctrlErreur->erreur($e->getMessage());
+            echo $e->getMessage();
         }
     }
 

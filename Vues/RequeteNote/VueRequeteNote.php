@@ -12,14 +12,14 @@
 <?= isset($msg) && $alert_type == "danger" ? '<div class="unit">
                                     <div class="alert alert-danger">
                                         <i class="fa fa-close"></i>
-                                        <strong>' . $msg . '</strong> This is error message
+                                        <strong>' . $msg . '</strong>
                                     </div>
                                 </div>' : "" ?>
 
 <?= isset($msg) && $alert_type == "success" ? '<div class="unit">
                                     <div class="alert alert-success">
                                         <i class="fa fa-close"></i>
-                                        <strong>' . $msg . '</strong> This is error message
+                                        <strong>' . $msg . '</strong>
                                     </div>
                                 </div>' : "" ?>
 
