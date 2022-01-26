@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mar. 25 jan. 2022 à 23:27
+-- Généré le : mer. 26 jan. 2022 à 01:13
 -- Version du serveur : 10.4.21-MariaDB
 -- Version de PHP : 7.4.24
 
@@ -102,12 +102,29 @@ CREATE TABLE `requete` (
   `id_req` int(11) NOT NULL,
   `id_et` int(11) NOT NULL,
   `date_req` datetime NOT NULL,
-  `statut_req` enum('En cours','Rejete','Non fondee','Traite') NOT NULL,
+  `statut_req` varchar(30) NOT NULL,
   `institule_req` text NOT NULL,
   `matiere_req` varchar(200) NOT NULL,
-  `session_req` enum('Normale','CC','','') NOT NULL,
+  `session_req` varchar(30) NOT NULL,
+  `img_req` text NOT NULL,
   `date_traitement_req` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `requete`
+--
+
+INSERT INTO `requete` (`id_req`, `id_et`, `date_req`, `statut_req`, `institule_req`, `matiere_req`, `session_req`, `img_req`, `date_traitement_req`) VALUES
+(1, 3, '0000-00-00 00:00:00', '', '', 'Bio112 => Introduction a la biologie', 'CC', 'logo-removebg - Copie.png', '0000-00-00 00:00:00'),
+(2, 3, '2022-01-26 00:24:12', '', '', 'Bio112 => Introduction a la biologie', 'NORMALE', '16700264_1256549784437199_6238696561194663446_o.jpg', '0000-00-00 00:00:00'),
+(3, 3, '2022-01-26 00:36:00', '', '', 'Bio112 => Introduction a la biologie', 'NORMALE', 'logo.jpg', '0000-00-00 00:00:00'),
+(4, 3, '2022-01-26 00:51:12', '', '', 'Bio112 => Introduction a la biologie', 'NORMALE', '16700264_1256549784437199_6238696561194663446_o.jpg', '0000-00-00 00:00:00'),
+(5, 3, '2022-01-26 00:51:29', '', '', 'Bio112 => Introduction a la biologie', 'NORMALE', '16700264_1256549784437199_6238696561194663446_o.jpg', '0000-00-00 00:00:00'),
+(6, 3, '2022-01-26 00:52:28', '', '', 'INF111 => Introduction aux algorithmes', 'CC', 'logo-large-removebg.png', '0000-00-00 00:00:00'),
+(7, 3, '2022-01-26 00:58:14', '', '', 'Bio112 => Introduction a la biologie', 'NORMALE', 'logo-large-removebg.png', '0000-00-00 00:00:00'),
+(8, 3, '2022-01-26 01:03:31', '', '', 'Bio112 => Introduction a la biologie', 'NORMALE', 'logo-removebg.png', '0000-00-00 00:00:00'),
+(9, 3, '2022-01-26 01:04:14', '', '', 'Bio112 => Introduction a la biologie', 'NORMALE', 'logo-removebg.png', '0000-00-00 00:00:00'),
+(10, 3, '2022-01-26 01:04:27', '', '', 'Bio112 => Introduction a la biologie', 'NORMALE', 'logo-removebg.png', '0000-00-00 00:00:00');
 
 --
 -- Index pour les tables déchargées
@@ -175,7 +192,7 @@ ALTER TABLE `notification`
 -- AUTO_INCREMENT pour la table `requete`
 --
 ALTER TABLE `requete`
-  MODIFY `id_req` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_req` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -26,16 +26,18 @@ class RequeteNoteController
     {
         if ($nom !== $_SESSION['USER']['ALL']['nom_et'] || $prenom !== $_SESSION['USER']['ALL']['prenom_et']) {
             $vue = new Vue('RequeteNote');
-            $vue->generer(array('msg' => 'Le nom ou le prenom ne concorde pas avec le votre, veuillez bien verifer avant de continuer ', 'nom' => $nom, 'prenom' => $prenom, 'specialit' => $specialite, 'nivea' => $niveau, 'specialites' => getSpecialite(), 'niveaux' => getNiveau(), 'matieres' => getMatiere()));
+            $vue->generer(array('msg' => 'Le nom ou le prenom ne concorde pas avec le votre, veuillez bien verifer avant de continuer ', 'alert_type' => 'danger', 'matier' => $matiere, 'nom' => $nom, 'prenom' => $prenom, 'specialit' => $specialite, 'nivea' => $niveau, 'specialites' => getSpecialite(), 'niveaux' => getNiveau(), 'matieres' => getMatiere()));
         } else {
             $id = $_SESSION['USER']['ALL']['id_et'];
             $ajout = $this->modeleRequeteNote->add($id, $matiere, $session, $img);
             if ($ajout) {
-                $vue = new Vue('Acceuil');
-                $vue->generer(array('msg' => 'Votre requete a ete envoye avec succes'));
-            } else {
+                $msg = "Votre requete a bien ete pris en compte";
                 $vue = new Vue('RequeteNote');
-                $vue->generer(array('msg' => 'Mauvaise insertion', 'nom' => $nom, 'prenom' => $prenom, 'specialit' => $specialite, 'nivea' => $niveau, 'specialites' => getSpecialite(), 'niveaux' => getNiveau(), 'matieres' => getMatiere()));
+                $vue->generer(array('msg' => $msg, 'alert_type' => 'success', 'specialites' => getSpecialite(), 'niveaux' => getNiveau(), 'matieres' => getMatiere()));
+            } else {
+                $msg = "Echec d'enregistrement de la requete, veuillez recommencer";
+                $vue = new Vue('RequeteNote');
+                $vue->generer(array('msg' => $msg, 'alert_type' => 'danger', 'nom' => $nom, 'prenom' => $prenom, 'specialit' => $specialite, 'nivea' => $niveau, 'matier' => $matiere, 'specialites' => getSpecialite(), 'niveaux' => getNiveau(), 'matieres' => getMatiere()));
             }
         }
     }

@@ -9,6 +9,20 @@
     </div>
 </div>
 
+<?= isset($msg) && $alert_type == "danger" ? '<div class="unit">
+                                    <div class="alert alert-danger">
+                                        <i class="fa fa-close"></i>
+                                        <strong>' . $msg . '</strong> This is error message
+                                    </div>
+                                </div>' : "" ?>
+
+<?= isset($msg) && $alert_type == "success" ? '<div class="unit">
+                                    <div class="alert alert-success">
+                                        <i class="fa fa-close"></i>
+                                        <strong>' . $msg . '</strong> This is error message
+                                    </div>
+                                </div>' : "" ?>
+
 <div class="row">
     <div class="col-md-12">
         <div class="widget-wrap">

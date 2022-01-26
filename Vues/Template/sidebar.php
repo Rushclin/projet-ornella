@@ -3,7 +3,7 @@
         <div class="user-profile-container">
             <div class="user-profile clearfix">
                 <div class="admin-user-thumb">
-                    <img src="Assets/images/avatar/jaman_01.jpg" alt="admin">
+                    <img src="Assets/images/avatar/avatar5.png" alt="admin">
                 </div>
                 <div class="admin-user-info">
                     <ul>

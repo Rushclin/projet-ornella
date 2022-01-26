@@ -9,13 +9,27 @@
     </div>
 </div>
 
+<?= isset($msg) && $alert_type == "danger" ? '<div class="unit">
+                                    <div class="alert alert-danger">
+                                        <i class="fa fa-close"></i>
+                                        <strong>' . $msg . '</strong>
+                                    </div>
+                                </div>' : "" ?>
+
+<?= isset($msg) && $alert_type == "success" ? '<div class="unit">
+                                    <div class="alert alert-success">
+                                        <i class="fa fa-close"></i>
+                                        <strong>' . $msg . '</strong>
+                                    </div>
+                                </div>' : "" ?>
+
 <div class="row">
     <div class="col-md-12">
         <div class="widget-wrap">
 
             <div class="widget-container margin-top-0 clearfix">
                 <div class="widget-content">
-                    <form action="" method="POST" class="j-forms" id="j-forms-validation" novalidate>
+                    <form action="index.php?action=requete/autre/post" enctype="multipart/form-data" method="POST" class="j-forms" id="j-forms-validation" novalidate>
                         <div class="form-content">
                             <div class="w-section-header">
                                 <h3>Remplissez le formulaire et soumettez votre requete</h3>
@@ -28,7 +42,7 @@
                                         <label class="icon-right" for="email">
                                             <i class="fa fa-user"></i>
                                         </label>
-                                        <input class="form-control" type="text" placeholder="" name="nom" id="nom" required>
+                                        <input class="form-control" type="text" value="<?= isset($nom) ? $nom : '' ?>" placeholder="" name="nom" id="nom" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6 unit">
@@ -37,7 +51,7 @@
                                         <label class="icon-right" for="url">
                                             <i class="fa fa-user"></i>
                                         </label>
-                                        <input class="form-control" type="text" placeholder="" name="prenom" id="prenom" required>
+                                        <input class="form-control" type="text" value="<?= isset($prenom) ? $prenom : '' ?>" placeholder="" name="prenom" id="prenom" required>
                                     </div>
                                 </div>
                             </div>
@@ -47,13 +61,11 @@
                                     <label class="label">Specialite</label>
 
                                     <label class="input select">
-                                        <select class="form-control" required>
+                                        <select class="form-control" required name='specialite'>
                                             <option value="none">Selectionnez une specialite</option>
-                                            <option value="0">Informatique</option>
-                                            <option value="1">Biologie</option>
-                                            <option value="2">Biochimie</option>
-                                            <option value="3">Biologie animale</option>
-                                            <option value="4">Biologie Vegetale</option>
+                                            <?php foreach ($specialites as $specialite) : ?>
+                                                <option value="<?= $specialite ?>" <?= isset($specialit) ? 'selected' : '' ?>> <?= $specialite ?> </option>
+                                            <?php endforeach; ?>
                                         </select>
                                         <i></i>
                                     </label>
@@ -61,31 +73,34 @@
                                 <div class="col-md-6 unit">
                                     <label class="label">Niveau</label>
                                     <label class="input select">
-                                        <select class="form-control" required>
+                                        <select class="form-control" required name='niveau'>
                                             <option value="none">Selectionnez un niveau d'etude</option>
-                                            <option value="0">1</option>
-                                            <option value="1">2</option>
-                                            <option value="2">3</option>
-                                            <option value="3">4</option>
-                                            <option value="4">5</option>
-                                            <option value="5">6</option>
+                                            <?php foreach ($niveaux as $niveau) : ?>
+                                                <option value="<?= $niveau ?>" <?= isset($nivea) ? 'selected' : '' ?>> <?= $niveau ?> </option>
+                                            <?php endforeach; ?>
                                         </select>
                                         <i></i>
                                     </label>
                                 </div>
                             </div>
 
+
+                            <input type="hidden" name="session" value="AUTRE">
+
+
                             <div class="row">
                                 <div class="col-md-12 unit">
                                     <label class="label">Objet</label>
-                                    <input type="text" name="" class="form-control" required id="">
+                                    <input type="text" name="objet" value="<?= isset($objet) ? $objet : '' ?>" class="form-control" required id="">
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-md-12 unit">
                                     <label class="label">Corps de la requete</label>
-                                    <textarea name="" id="" cols="30" rows="4" class="form-control"></textarea>
+                                    <textarea name="corps" rows="4" class="form-control" required>
+                                        <?= isset($corps) ? $corps : "" ?>
+                                    </textarea>
                                 </div>
                             </div>
 
@@ -97,7 +112,7 @@
                                     </label>
                                     <div class="file-button">
                                         Fouiller
-                                        <input type="file" name="file" onchange="document.getElementById('append-big-btn').value = this.value;">
+                                        <input type="file" required name="file" onchange="document.getElementById('append-big-btn').value = this.value;">
                                     </div>
                                     <input class="form-control" type="text" id="append-big-btn" readonly="" placeholder="no file selected">
                                     <span class="hint">Type supporte : jpg / png </span>

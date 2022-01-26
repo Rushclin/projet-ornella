@@ -47,11 +47,26 @@ class Routeur
                     $prenom = $this->getParametre($_POST, 'prenom');
                     $specialite = $this->getParametre($_POST, 'specialite');
                     $niveau = $this->getParametre($_POST, 'niveau');
-                    $matiere = $_POST['matiere'];
-                    $session = $_POST['session'];
-                    //$file = $this->getParametre($_POST, 'file');
+                    $objet = $this->getParametre($_POST, 'objet');
+                    $matiere = $this->getParametre($_POST, 'matiere');
+                    $session = $this->getParametre($_POST, 'session');
 
                     $this->ctrlRequetNote->create($matiere, $session, $img, $nom, $prenom, $specialite, $niveau);
+                } else if ($_GET['action'] == 'requete/autre/post') {
+                    
+                    $target = "Assets/images/justifications/" . basename($_FILES['file']['name']);
+                    $img = $_FILES['file']['name'];
+                    move_uploaded_file($_FILES['file']['tmp_name'], $target);
+
+                    $nom = $this->getParametre($_POST, 'nom');
+                    $prenom = $this->getParametre($_POST, 'prenom');
+                    $specialite = $this->getParametre($_POST, 'specialite');
+                    $niveau = $this->getParametre($_POST, 'niveau');
+                    $objet = $_POST['objet'];
+                    $corps = $_POST['corps'];
+                    $session = $_POST['session'];
+
+                    $this->ctrlRequetAutre->create($objet, $corps, $session, $img, $nom, $prenom, $specialite, $niveau);
                 } else if ($_GET['action'] == 'requete/note') {
                     $this->ctrlRequetNote->index();
                 } else if ($_GET['action'] == 'requete/autre') {
