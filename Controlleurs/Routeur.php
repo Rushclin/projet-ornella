@@ -1,4 +1,5 @@
 <?php
+
 require 'Controlleurs/AcceuilController.php';
 require 'Controlleurs/ErreurController.php';
 require 'Controlleurs/LoginController.php';
@@ -93,19 +94,30 @@ class Routeur
                     $this->ctrlRequetAutre->create($objet, $corps, $session, $img, $nom, $prenom, $specialite, $niveau);
                 }
 
-                // On commence a gerer l'administrateur ici
+                // On commence a gerer le traitement de l'administrateur ici
+
+                // Lorsque l'action de l'URL c'est admin, on affiche d'abord le formulaire
                 else if ($_GET['action'] == 'admin') {
                     $this->ctrlLogin->indexAdmin();
+
+                    // Ici il a rempli le formulaire et veux s'authentifier, on appele la fonction de son login
                 } else if ($_GET['action'] == 'admin/login') {
+
                     $login = $this->getParametre($_POST, 'login');
                     $mdp = $this->getParametre($_POST, 'password');
 
                     $this->ctrlLogin->loginAdmin($login, $mdp);
+
+                    // Ici il veut la liste des requete, on affiche la liste
                 } else if ($_GET['action'] == 'admin/requete/note/all') {
                     $this->ctrlRequetNote->showAdminRequeteNote();
+
+                    // Lorqu'il veut traiter une requete, on affiche d'abord la reque en elle meme sur une page 
                 } else if ($_GET['action'] == 'admin/requete/note/traitement') {
                     $id = $_GET['id'];
                     $this->ctrlRequetNote->showOneRequete($id);
+
+                    //Lorsque l'administrateur a deja remplie le formulaire pour traiter la requete et il soumet, on appele la fonction de mise a jour
                 } else if ($_GET['action'] == 'admin/requete/note/traitement/post') {
                     $reponse = $this->getParametre($_POST, 'reponse');
                     $statut = $this->getParametre($_POST, 'statut');
@@ -134,9 +146,11 @@ class Routeur
             } else {
                 $this->ctrlLogin->index();
             }
+
+            // Lorsque l'URL est mal entre, on leve une exception et on affiche la page 404
+
         } catch (Exception $e) {
             $this->ctrlErreur->erreur($e->getMessage());
-            //echo $e->getMessage();
         }
     }
 
