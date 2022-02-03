@@ -107,8 +107,8 @@
                                             <span class="label label-warning" title="<?= $item['statut_req'] ?>">
                                                 <?= $item['statut_req'] ?>
                                             </span>
-                                        <?php } else if ($item['statut_req'] == 'TRAITEE') { ?>
-                                            <span class="label label-success" title="<?= $item['statut_req'] ?>">
+                                        <?php } else if ($item['statut_req'] == 'TRAITEES') { ?>
+                                            <span class="label label-primary" title="<?= $item['statut_req'] ?>">
                                                 <?= $item['statut_req'] ?>
                                             </span>
                                         <?php } ?>

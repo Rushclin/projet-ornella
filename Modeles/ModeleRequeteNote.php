@@ -4,10 +4,13 @@ require_once 'Modeles/Modele.php';
 
 class ModeleRequeteNote extends Modele
 {
+    /**
+     * Fonction de creation d'une requet de note
+     */
     public function add($id_et, $matiere, $session, $img)
     {
         $result = $this->executerRequete('INSERT INTO requete (id_req, id_et, date_req, matiere_req, img_req, session_req, statut_req) VALUES(NULL, ?, NOW(), ?, ?, ?, ?)', array($id_et, $matiere, $img, $session, 'EN COURS'));
-        $notifications = $this->executerRequete('INSERT INTO notifications (id_not, id_et, message_not, statut_not, date_not) VALUES(NULL, ?, ?, ?, NOW())', array($id_et, 'Requete envoyee', 'EN COURS'));
+        // $notifications = $this->executerRequete('INSERT INTO notifications (id_not, id_et, message_not, statut_not, date_not) VALUES(NULL, ?, ?, ?, NOW())', array($id_et, 'Requete envoyee', 'EN COURS'));
         if ($result)
             return true;
         else
@@ -93,6 +96,30 @@ class ModeleRequeteNote extends Modele
     {
         $id = $_SESSION['USER']['ALL']['id_et'];
         $result = $this->executerRequete('SELECT * FROM requete WHERE statut_req = ? AND id_et = ?', array('REJETE', $id));
+        if ($result)
+            return $result;
+    }
+
+    public function getRequetEmis()
+    {
+        $id = $_SESSION['USER']['ALL']['id_et'];
+        $result = $this->executerRequete('SELECT COUNT(*) FROM requete WHERE id_et = ?', array($id));
+        if ($result)
+            return $result;
+    }
+
+    public function getRequeteTraiteNbre()
+    {
+        $id = $_SESSION['USER']['ALL']['id_et'];
+        $result = $this->executerRequete('SELECT COUNT(*) FROM requete WHERE id_et = ? AND statut_req = ?', array($id, 'TRAITEES'));
+        if ($result)
+            return $result;
+    }
+
+    public function getRequeteRejeteNbre()
+    {
+        $id = $_SESSION['USER']['ALL']['id_et'];
+        $result = $this->executerRequete('SELECT COUNT(*) FROM requete WHERE id_et = ? AND statut_req = ?', array($id, 'REJETE'));
         if ($result)
             return $result;
     }
