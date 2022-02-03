@@ -27,4 +27,25 @@ class ModeleUser extends Modele
             return $info->fetch();
         }
     }
+
+    /**
+     * Les fonctions relatives a l'administrateur
+     */
+
+    public function getAdmin($login, $mdp)
+    {
+        $admin = $this->executerRequete('SELECT * FROM administrateur WHERE username_admin = ? AND password_admin = ?', array($login, $mdp));
+        if ($admin)
+            return true;
+        else
+            return false;
+    }
+
+    public function getAllInfoAdmin($login, $mdp)
+    {
+        $info = $this->executerRequete('SELECT * FROM administrateur WHERE username_administrateur = ? AND password_admin = ?', array($login, $mdp));
+        if ($info->rowCount() == 1) {
+            return $info->fetch();
+        }
+    }
 }

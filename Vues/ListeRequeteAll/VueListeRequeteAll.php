@@ -95,9 +95,23 @@
                                     <td data-value=""><?= $item['session_req'] ?></td>
                                     <td data-value="2">
                                         <!-- Je doit mettre les condition pour les differents statuts ici -->
-                                        <span class="label label-success" title="<?= $item['statut_req'] ?>">
-                                            <?= $item['statut_req'] ?>
-                                        </span>
+                                        <?php if ($item['statut_req'] == 'EN COURS') { ?>
+                                            <span class="label label-success" title="<?= $item['statut_req'] ?>">
+                                                <?= $item['statut_req'] ?>
+                                            </span>
+                                        <?php } else if ($item['statut_req'] == 'REJETE') { ?>
+                                            <span class="label label-danger" title="<?= $item['statut_req'] ?>">
+                                                <?= $item['statut_req'] ?>
+                                            </span>
+                                        <?php } else if ($item['statut_req'] == 'NON FONDEE') { ?>
+                                            <span class="label label-warning" title="<?= $item['statut_req'] ?>">
+                                                <?= $item['statut_req'] ?>
+                                            </span>
+                                        <?php } else if ($item['statut_req'] == 'TRAITEE') { ?>
+                                            <span class="label label-success" title="<?= $item['statut_req'] ?>">
+                                                <?= $item['statut_req'] ?>
+                                            </span>
+                                        <?php } ?>
                                     </td>
                                     <!--<td class="td-right"><a class="row-edit" href="#"><span class="zmdi zmdi-edit"></span></a> <a class="row-delete" href="#"><span class="zmdi zmdi-close"></span></a></td>-->
                                 </tr>

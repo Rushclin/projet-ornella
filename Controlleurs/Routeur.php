@@ -67,6 +67,27 @@ class Routeur
                     $session = $_POST['session'];
 
                     $this->ctrlRequetAutre->create($objet, $corps, $session, $img, $nom, $prenom, $specialite, $niveau);
+                } // On commence a gerer l'administrateur ici
+                else if ($_GET['action'] == 'admin') {
+                    $this->ctrlLogin->indexAdmin();
+                } else if ($_GET['action'] == 'admin/login') {
+                    $login = $this->getParametre($_POST, 'login');
+                    $mdp = $this->getParametre($_POST, 'password');
+
+                    $this->ctrlLogin->loginAdmin($login, $mdp);
+                } else if ($_GET['action'] == 'admin/requete/note/all') {
+                    $this->ctrlRequetNote->showAdminRequeteNote();
+                } else if ($_GET['action'] == 'admin/requete/note/traitement') {
+                    $id = $_GET['id'];
+                    $this->ctrlRequetNote->showOneRequete($id);
+                } else if ($_GET['action'] == 'admin/requete/note/traitement/post') {
+                    $reponse = $this->getParametre($_POST, 'reponse');
+                    $statut = $this->getParametre($_POST, 'statut');
+                    $id = $this->getParametre($_GET, 'id');
+                    $id_et = 1;
+                    $this->ctrlRequetNote->updateRequete($reponse, $statut, $id, $id_et);
+                } else if ($_GET['action'] == 'admin/requete/liste') {
+                    $this->ctrlRequetNote->showRequeteTraite();
                 } else if ($_GET['action'] == 'requete/note') {
                     $this->ctrlRequetNote->index();
                 } else if ($_GET['action'] == 'requete/autre') {

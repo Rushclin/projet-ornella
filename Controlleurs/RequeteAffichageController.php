@@ -6,7 +6,7 @@ require_once 'Modeles/ModeleRequeteNote.php';
 class RequeteAffichageController
 {
 
-    private $mdeleRequet;
+    private $modeleRequet;
 
     public function __construct()
     {
@@ -23,25 +23,29 @@ class RequeteAffichageController
 
     public function requeteEnCours()
     {
+        $requetes = $this->modeleRequet->getRequeteEnCours();
         $vue = new Vue('ListeRequeteEnCours');
-        $vue->generer(array());
+        $vue->generer(array('requetes' => $requetes));
     }
 
     public function requeteNonFondee()
     {
+        $requetes = $this->modeleRequet->getRequeteNonFondee();
         $vue = new Vue('ListeRequeteNonFondees');
-        $vue->generer(array());
+        $vue->generer(array('requetes' => $requetes));
     }
 
     public function requeteTraitee()
     {
+        $requetes = $this->modeleRequet->getRequeteTraitees();
         $vue = new Vue('ListeRequeteTraitees');
-        $vue->generer(array());
+        $vue->generer(array('requetes' => $requetes));
     }
 
     public function requeteRejetee()
     {
+        $requetes = $this->modeleRequet->getRequeteRejetee();
         $vue = new Vue('ListeRequeteRejetees');
-        $vue->generer(array());
+        $vue->generer(array('requetes' => $requetes));
     }
 }

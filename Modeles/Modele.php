@@ -24,4 +24,12 @@ class Modele
         }
         return $this->bd;
     }
+
+    public function dateBase()
+    {
+        if ($this->bd == null) {
+            $this->bd = new PDO('mysql:host=' . config()['HOST'] . ';dbname=' . config()['DATABASE'], config()['USER'], config()['PASSWORD']);
+        }
+        return $this->bd;
+    }
 }

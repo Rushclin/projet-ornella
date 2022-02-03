@@ -1,6 +1,7 @@
 <?php
 
 require_once 'Vues/Vue.php';
+require_once 'Vues/VueAdmin.php';
 require_once 'Modeles/ModeleUser.php';
 require_once 'Config/Values.php';
 require_once 'Modeles/ModeleRequeteNote.php';
@@ -35,5 +36,36 @@ class RequeteNoteController
             $vue = new Vue('RequeteNote');
             $vue->generer(array('msg' => $msg, 'alert_type' => 'danger', 'nom' => $nom, 'prenom' => $prenom, 'specialit' => $specialite, 'nivea' => $niveau, 'matier' => $matiere, 'specialites' => getSpecialite(), 'niveaux' => getNiveau(), 'matieres' => getMatiere()));
         }
+    }
+
+    public function showAdminRequeteNote()
+    {
+        $allRequete = $this->modeleRequeteNote->getAllRequete();
+        $vue = new VueAdmin('RequeteNote');
+        $vue->generer(array('requetes' => $allRequete));
+    }
+
+    public function showOneRequete($id)
+    {
+        $requete = $this->modeleRequeteNote->getOneRequete($id);
+        $vue = new VueAdmin('RequeteNoteTraite');
+        $vue->generer(array('requete' => $requete));
+    }
+
+    public function updateRequete($reponse, $statut, $id, $id_et)
+    {
+        $resultat =  $this->modeleRequeteNote->updateRequetNoteWhitStatutAndReponse($reponse, $statut, $id, $id_et);
+        if ($resultat) {
+            $this->showAdminRequeteNote();
+        } else {
+            $this->showOneRequete($id);
+        }
+    }
+
+    public function showRequeteTraite()
+    {
+        $requete = $this->modeleRequeteNote->getRequeteTraite();
+        $vue = new VueAdmin('RequeteNoteDejaTraite');
+        $vue->generer(array('requetes' => $requete));
     }
 }

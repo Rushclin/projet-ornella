@@ -30,3 +30,13 @@ function getMatiere()
         'INF111 => Introduction aux algorithmes'
     );
 }
+
+function getStatut()
+{
+    return array(
+        'EN COURS',
+        'NON FONDEE',
+        'REJETE',
+        'TRAITEES'
+    );
+}
