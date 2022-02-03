@@ -1,28 +1,35 @@
 <?php
 
-
 require_once 'Modeles/ModeleUser.php';
 require_once 'Vues/LoginVue.php';
 require_once 'Vues/VueAdmin.php';
 require_once 'Vues/LoginVueAdmin.php';
 
 class LoginController
-
 {
 
     private $modeleUser;
 
+    /**
+     * Le constructeur de la classe, a pour role d'initialiser ou d'instancier la classe ModeleUser
+     */
     public function __construct()
     {
         $this->modeleUser = new ModeleUser();
     }
 
+    /**
+     * Fonction d'index, a pour role de generer la vue login, donc la vue de connexion 
+     */
     public function index()
     {
         $vue = new LoginVue('Login');
         $vue->generer(array());
     }
 
+    /**
+     * La fonction login a pour role de connecter un utilisateur
+     */
     public function login($login, $mdp)
     {
         if ($login == null || $mdp == null) {
@@ -44,16 +51,24 @@ class LoginController
         }
     }
 
+
     /**
      * Les differentes fonctions pour l'administrateur
      */
 
+
+    /**
+     *  Fonction de la page index de l'administrateur
+     */
     public function indexAdmin()
     {
         $vue = new LoginVueAdmin('Login');
         $vue->generer(array());
     }
 
+    /**
+     * Fonction de connexion d'un administrateur
+     */
     public function loginAdmin($login, $mdp)
     {
         if ($login == null || $mdp == null) {

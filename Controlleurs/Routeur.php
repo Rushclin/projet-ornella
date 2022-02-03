@@ -6,6 +6,12 @@ require 'Controlleurs/RequeteNoteController.php';
 require 'Controlleurs/RequeteAutreController.php';
 require 'Controlleurs/RequeteAffichageController.php';
 
+/**
+ * 
+ * La classe Routeur a pour but de router, parser les requet qui pqasse par l'URL du navigateur
+ * 
+ */
+
 class Routeur
 {
     private $ctrlAcceuil;
@@ -27,22 +33,37 @@ class Routeur
 
     public function routerRequet()
     {
+
+        // La variable $_GET['action'] permet de recuperer l'URL et de la parser
+
         try {
             if (isset($_GET['action'])) {
+
+                // Lorsque le parametre de la requete c'est acceuil
                 if ($_GET['action'] == 'acceuil') {
                     $this->ctrlAcceuil->acceuil();
+
+                    // Lorsque l'action c'est login, en fait c'est le login de l'utilisateur
                 } else if ($_GET['action'] == 'login') {
                     $this->ctrlLogin->index();
+
+                    // Lorsque l'actionc'est login/connexion, on suppose qu'il q deja remplis le formulaire
                 } else if ($_GET['action'] == 'login/connexion') {
+
+                    // On recupere donc ses identifiants de connexion
                     $matricule = $this->getParametre($_POST, 'matricule');
                     $email = $this->getParametre($_POST, 'email');
                     $this->ctrlLogin->login($matricule, $email);
+
+                    // Lorsque l'action c'est de poster une requete de note => ajouter une requete
                 } else if ($_GET['action'] == 'requete/note/post') {
 
+                    // On recupere les champs necessaires et on appele la methode create du controlleur RequeteNote
                     $target = "Assets/images/justifications/" . basename($_FILES['file']['name']);
                     $img = $_FILES['file']['name'];
                     move_uploaded_file($_FILES['file']['tmp_name'], $target);
 
+                    // Recuperation des donnees necessaires
                     $nom = $this->getParametre($_POST, 'nom');
                     $prenom = $this->getParametre($_POST, 'prenom');
                     $specialite = $this->getParametre($_POST, 'specialite');
@@ -51,7 +72,10 @@ class Routeur
                     $session = $this->getParametre($_POST, 'session');
                     $statuts = $this->getParametre($_POST, 'statut');
 
+                    // Appel du controlleur
                     $this->ctrlRequetNote->create($matiere, $session, $img, $nom, $prenom, $specialite, $niveau, $statuts);
+
+                    // Lorsque l'action est de poster une requete autre, Requete Autre, on suit le meme canevas qu'en haut
                 } else if ($_GET['action'] == 'requete/autre/post') {
 
                     $target = "Assets/images/justifications/" . basename($_FILES['file']['name']);
@@ -67,7 +91,9 @@ class Routeur
                     $session = $_POST['session'];
 
                     $this->ctrlRequetAutre->create($objet, $corps, $session, $img, $nom, $prenom, $specialite, $niveau);
-                } // On commence a gerer l'administrateur ici
+                }
+
+                // On commence a gerer l'administrateur ici
                 else if ($_GET['action'] == 'admin') {
                     $this->ctrlLogin->indexAdmin();
                 } else if ($_GET['action'] == 'admin/login') {
@@ -109,8 +135,8 @@ class Routeur
                 $this->ctrlLogin->index();
             }
         } catch (Exception $e) {
-            // $this->ctrlErreur->erreur($e->getMessage());
-            echo $e->getMessage();
+            $this->ctrlErreur->erreur($e->getMessage());
+            //echo $e->getMessage();
         }
     }
 

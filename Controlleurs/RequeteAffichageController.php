@@ -3,6 +3,9 @@
 require_once 'Vues/Vue.php';
 require_once 'Modeles/ModeleRequeteNote.php';
 
+/** 
+ * La classe qui gere l'affichagedes requettes et autre
+ */
 class RequeteAffichageController
 {
 
@@ -13,6 +16,9 @@ class RequeteAffichageController
         $this->modeleRequet = new ModeleRequeteNote();
     }
 
+    /**
+     * La fonction index c'est pour l'affichage en general 
+     */
     public function index()
     {
         $requetes = $this->modeleRequet->getRequeteAll();
