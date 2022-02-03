@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mer. 26 jan. 2022 à 01:13
+-- Généré le : jeu. 03 fév. 2022 à 12:34
 -- Version du serveur : 10.4.21-MariaDB
 -- Version de PHP : 7.4.24
 
@@ -24,10 +24,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `admin`
+-- Structure de la table `administrateur`
 --
 
-CREATE TABLE `admin` (
+CREATE TABLE `administrateur` (
   `id_admin` int(11) NOT NULL,
   `username_admin` varchar(30) NOT NULL,
   `password_admin` varchar(200) NOT NULL,
@@ -36,6 +36,13 @@ CREATE TABLE `admin` (
   `tel_admin` varchar(30) NOT NULL,
   `role_admin` enum('admin','super','','') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `administrateur`
+--
+
+INSERT INTO `administrateur` (`id_admin`, `username_admin`, `password_admin`, `nom_admin`, `prenom_admin`, `tel_admin`, `role_admin`) VALUES
+(1, 'admin', 'superadmin', 'Takam', 'Rushclin', '690139627', 'admin');
 
 -- --------------------------------------------------------
 
@@ -82,15 +89,24 @@ CREATE TABLE `matiere` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `notification`
+-- Structure de la table `notifications`
 --
 
-CREATE TABLE `notification` (
+CREATE TABLE `notifications` (
   `id_not` int(11) NOT NULL,
+  `id_req` int(11) NOT NULL,
+  `id_et` int(11) NOT NULL,
   `message_not` text NOT NULL,
-  `statut_not` enum('En cours','Rejetee','Non fondee','traitee') NOT NULL,
+  `statut_not` varchar(300) NOT NULL,
   `date_not` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `notifications`
+--
+
+INSERT INTO `notifications` (`id_not`, `id_req`, `id_et`, `message_not`, `statut_not`, `date_not`) VALUES
+(1, 0, 3, 'Requete envoyee', 'EN COURS', '2022-02-03 07:28:24');
 
 -- --------------------------------------------------------
 
@@ -103,9 +119,11 @@ CREATE TABLE `requete` (
   `id_et` int(11) NOT NULL,
   `date_req` datetime NOT NULL,
   `statut_req` varchar(30) NOT NULL,
-  `institule_req` text NOT NULL,
+  `reponse_req` text NOT NULL,
   `matiere_req` varchar(200) NOT NULL,
   `session_req` varchar(30) NOT NULL,
+  `corps_req` text NOT NULL,
+  `objet_req` text NOT NULL,
   `img_req` text NOT NULL,
   `date_traitement_req` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -114,26 +132,27 @@ CREATE TABLE `requete` (
 -- Déchargement des données de la table `requete`
 --
 
-INSERT INTO `requete` (`id_req`, `id_et`, `date_req`, `statut_req`, `institule_req`, `matiere_req`, `session_req`, `img_req`, `date_traitement_req`) VALUES
-(1, 3, '0000-00-00 00:00:00', '', '', 'Bio112 => Introduction a la biologie', 'CC', 'logo-removebg - Copie.png', '0000-00-00 00:00:00'),
-(2, 3, '2022-01-26 00:24:12', '', '', 'Bio112 => Introduction a la biologie', 'NORMALE', '16700264_1256549784437199_6238696561194663446_o.jpg', '0000-00-00 00:00:00'),
-(3, 3, '2022-01-26 00:36:00', '', '', 'Bio112 => Introduction a la biologie', 'NORMALE', 'logo.jpg', '0000-00-00 00:00:00'),
-(4, 3, '2022-01-26 00:51:12', '', '', 'Bio112 => Introduction a la biologie', 'NORMALE', '16700264_1256549784437199_6238696561194663446_o.jpg', '0000-00-00 00:00:00'),
-(5, 3, '2022-01-26 00:51:29', '', '', 'Bio112 => Introduction a la biologie', 'NORMALE', '16700264_1256549784437199_6238696561194663446_o.jpg', '0000-00-00 00:00:00'),
-(6, 3, '2022-01-26 00:52:28', '', '', 'INF111 => Introduction aux algorithmes', 'CC', 'logo-large-removebg.png', '0000-00-00 00:00:00'),
-(7, 3, '2022-01-26 00:58:14', '', '', 'Bio112 => Introduction a la biologie', 'NORMALE', 'logo-large-removebg.png', '0000-00-00 00:00:00'),
-(8, 3, '2022-01-26 01:03:31', '', '', 'Bio112 => Introduction a la biologie', 'NORMALE', 'logo-removebg.png', '0000-00-00 00:00:00'),
-(9, 3, '2022-01-26 01:04:14', '', '', 'Bio112 => Introduction a la biologie', 'NORMALE', 'logo-removebg.png', '0000-00-00 00:00:00'),
-(10, 3, '2022-01-26 01:04:27', '', '', 'Bio112 => Introduction a la biologie', 'NORMALE', 'logo-removebg.png', '0000-00-00 00:00:00');
+INSERT INTO `requete` (`id_req`, `id_et`, `date_req`, `statut_req`, `reponse_req`, `matiere_req`, `session_req`, `corps_req`, `objet_req`, `img_req`, `date_traitement_req`) VALUES
+(12, 0, '2022-01-26 08:22:31', 'REJETE', 'Non Non Non et Non Non no\r\n                                    ', '', 'AUTRE', 'dfvwerrrrrrrrrrrrr', 'Demande de permission', 'logo-large-removebg.png', '2022-02-03 10:58:05'),
+(13, 3, '2022-01-26 08:25:03', 'NON FONDEE', 'nfjh\r\n                                    ', '', 'AUTRE', 'dfvwerrrrrrrrrrrrr', 'Demande de permission', 'logo-large-removebg.png', '2022-02-03 06:45:21'),
+(14, 3, '2022-01-26 08:39:52', 'REJETE', 'Mon ami, apprend a rediger une requete\r\n                                    ', '', 'AUTRE', '                                        Takam Rushclin                                                                                                            ', 'Demande de permission', 'logo-removebg.png', '2022-02-03 07:04:02'),
+(15, 3, '2022-01-26 21:30:11', 'REJETE', 'Votre requete est rejete parce que vous avez mal saisie\r\n                                    ', '', 'AUTRE', 'Demande de requete                                           ', 'Demande de stage academique', 'green_grass_field-2560x1600.jpg', '2022-02-03 06:48:15'),
+(19, 3, '2022-01-27 00:34:29', 'TRAITEES', 'C\'est nous qui vous remercions\r\n                                    ', 'Bio112 => Introduction a la biologie', 'CC', '', '', 'DTEK Investment Logo - Black with White Background - 5000x5000.png', '2022-02-03 10:54:42'),
+(20, 2, '2022-01-27 00:42:58', 'REJETE', '', 'Bio112 => Introduction a la biologie', 'NORMALE', '', '', 'DTEK Investement Logo - Black with White Background - 5000x5000.png', '0000-00-00 00:00:00'),
+(21, 3, '2022-02-03 07:07:17', 'EN COURS', '', 'INF111 => Introduction aux algorithmes', 'NORMALE', '', '', '-399016880.jpg', '0000-00-00 00:00:00'),
+(22, 3, '2022-02-03 07:21:21', 'EN COURS', '', 'INF111 => Introduction aux algorithmes', 'NORMALE', '', '', '-399016880.jpg', '0000-00-00 00:00:00'),
+(23, 3, '2022-02-03 07:27:29', 'EN COURS', '', 'INF111 => Introduction aux algorithmes', 'NORMALE', '', '', '-399016880.jpg', '0000-00-00 00:00:00'),
+(24, 3, '2022-02-03 07:28:24', 'EN COURS', '', 'INF111 => Introduction aux algorithmes', 'NORMALE', '', '', '-399016880.jpg', '0000-00-00 00:00:00'),
+(25, 3, '2022-02-03 09:35:09', 'TRAITEES', 'Votre requete a bien ete traite et vous pouvez prendre votre conge\r\n                                    ', '', 'AUTRE', 'J\'aimerais faire une demande de permission pour une duree de 2 semaine\r\n            Dans l\'optique que ca retienne votre attention, je vous pris de me l\'accorder                                                                     ', 'Demande de permission pour 2 semaines', 'green_grass_field-2560x1600.jpg', '2022-02-03 10:54:18');
 
 --
 -- Index pour les tables déchargées
 --
 
 --
--- Index pour la table `admin`
+-- Index pour la table `administrateur`
 --
-ALTER TABLE `admin`
+ALTER TABLE `administrateur`
   ADD PRIMARY KEY (`id_admin`);
 
 --
@@ -149,9 +168,9 @@ ALTER TABLE `matiere`
   ADD PRIMARY KEY (`id_mat`);
 
 --
--- Index pour la table `notification`
+-- Index pour la table `notifications`
 --
-ALTER TABLE `notification`
+ALTER TABLE `notifications`
   ADD PRIMARY KEY (`id_not`);
 
 --
@@ -165,10 +184,10 @@ ALTER TABLE `requete`
 --
 
 --
--- AUTO_INCREMENT pour la table `admin`
+-- AUTO_INCREMENT pour la table `administrateur`
 --
-ALTER TABLE `admin`
-  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `administrateur`
+  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `etudiant`
@@ -183,16 +202,16 @@ ALTER TABLE `matiere`
   MODIFY `id_mat` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `notification`
+-- AUTO_INCREMENT pour la table `notifications`
 --
-ALTER TABLE `notification`
-  MODIFY `id_not` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `notifications`
+  MODIFY `id_not` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `requete`
 --
 ALTER TABLE `requete`
-  MODIFY `id_req` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_req` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
