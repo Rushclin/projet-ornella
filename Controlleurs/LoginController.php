@@ -4,6 +4,7 @@ require_once 'Modeles/ModeleUser.php';
 require_once 'Vues/LoginVue.php';
 require_once 'Vues/VueAdmin.php';
 require_once 'Vues/LoginVueAdmin.php';
+require_once 'Modeles/ModeleRequeteNote.php';
 
 class LoginController
 {
@@ -16,6 +17,7 @@ class LoginController
     public function __construct()
     {
         $this->modeleUser = new ModeleUser();
+        $this->modeleRequeteNote = new ModeleRequeteNote();
     }
 
     /**
@@ -42,8 +44,11 @@ class LoginController
 
         if ($resultat) {
             $_SESSION['USER']['ALL'] = $this->modeleUser->getAllInfo($login, $mdp);
+            $nbreEmis = $this->modeleRequeteNote->getRequetEmis();
+            $nbreTaite = $this->modeleRequeteNote->getRequeteTraiteNbre();
+            $nbreRejete = $this->modeleRequeteNote->getRequeteRejeteNbre();
             $vue = new Vue('Acceuil');
-            $vue->generer(array());
+            $vue->generer(array('nbreEmis' => $nbreEmis, 'nbreTraite' => $nbreTaite, 'nbreRejete' => $nbreRejete));
         } else {
             $msg = "Erreur !! verifiez matricule ou le email ";
             $vue = new LoginVue('Login');
@@ -80,6 +85,7 @@ class LoginController
         $resultat = $this->modeleUser->getAdmin($login, $mdp);
 
         if ($resultat) {
+
             $vue = new VueAdmin('Acceuil');
             $vue->generer(array());
         } else {
