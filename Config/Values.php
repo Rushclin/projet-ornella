@@ -9,7 +9,10 @@ function getSpecialite()
         'Biologie Vegetale',
         'Informatique',
         'Physique',
-        'Mathematiques'
+        'Mathematiques',
+        'Science de la terre',
+        'Mecatronique',
+        'Chimie'
     );
 }
 
@@ -27,7 +30,8 @@ function getMatiere()
 {
     return array(
         'Bio112 => Introduction a la biologie',
-        'INF111 => Introduction aux algorithmes'
+        'INF111 => Introduction aux algorithmes',
+        'Meca111 => Mecanique applique a la physique',
     );
 }
 
